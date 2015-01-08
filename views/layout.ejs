@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>New Sails App</title>
+    <title>Boats, boats everywhere. ARRRR!</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -31,9 +31,24 @@
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
+    <link type="text/css" href='http://sailsjs.org/styles/fonts.css' rel='stylesheet'/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+    <link rel="import" href="components/polymer/polymer.html">
+    <style>
+      body {
+        font-family: 'Roboto', serif;
+        font-size: 16px;
+      }
+      h1 {
+        size: 1em;
+      }
+      li {
+        size: 0.9em;
+      }
+      </style>
   </head>
 
-  <body>
+  <body unresolved>
     <%- body %>
 
 

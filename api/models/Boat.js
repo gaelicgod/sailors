@@ -8,7 +8,18 @@
 module.exports = {
 
   attributes: {
+  	name: {
+  		required: true,
+  		type: 'string'
+  	},
 
+  	owner: {
+  		type: 'string'
+  	},
+
+  	harbour: {
+  		model: 'harbour'
+  	}
   }
 };
 
