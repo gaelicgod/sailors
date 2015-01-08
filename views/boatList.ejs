@@ -1,0 +1,38 @@
+<h1>Boats</h1>
+<p>This is a list of boats in the system:</p>
+
+<ul>
+	<% if (boats.length > 0) { %>
+		<% _.each(boats, function (b) { %>
+			<li><%= boat.name %></li>
+		<% }) %>
+	<% } else { %>
+	<li>No Boats in the system</li>
+	<% } %>
+</ul>
+
+<form action="/boat/create" id="addBoat">
+	<fieldset>
+		<legend>Add a Boat</legend>
+		<div>
+			<label for="name">Boat Name</label>
+			<input type="text" name="name" id="name" value="" placeholder="Boat Name">
+		</div>
+		<div>
+			<label for="owner" id="owner">Owner Name</label>
+			<input type="text" name="owner" id="owner" value="" placeholder="Owner Name">
+		</div>
+		<div>
+			<label for="harbour">Choose Harbour</label>
+			<select name="harbour" id="harbour">
+				<option value="">Choose...</option>
+				<% _.each(harbours, function (h) { %>
+				<option value="<%= h.id %>"><%= h.name %></option>
+				<% }) %>
+			</select>
+		</div>
+		<div>
+			<button id="addBoat" type="submit">add boat</button>
+		</div>
+	</fieldset>
+</form>
