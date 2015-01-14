@@ -29,6 +29,7 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   migrate: 'safe',
+  autoPK: true,
   autoCreatedAt: true,
   autoUpdatedAt: true
 

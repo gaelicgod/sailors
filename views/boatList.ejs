@@ -1,38 +1,106 @@
-<h1>Boats</h1>
-<p>This is a list of boats in the system:</p>
+<header></header>
+<main>
+    <div class="container">
+        <h1>Boats</h1>
+        <p>This is a list of boats in the system:</p>
+        <div class="divider"></div>
 
-<ul>
-	<% if (boats.length > 0) { %>
-		<% _.each(boats, function (b) { %>
-			<li><%= boat.name %></li>
-		<% }) %>
-	<% } else { %>
-	<li>No Boats in the system</li>
-	<% } %>
-</ul>
+        <table>
+            <thead>
+                <tr>
+                    <th data-field="name">Boat Name</th>
+                    <th data-field="owner">Owner Name</th>
+                    <th data-field="createdAt">Created</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% if (boats.length > 0) { %>
+                <% _.each(boats, function (b) { %>
+                    <tr>
+                        <td><%= b.name %></td>
+                        <td><%= b.owner %></td>
+                        <td><%= b.createdAt %></td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="3">No Boats in the system</td>
+                </tr>
+            <% } %>
+            </tbody>
+            <tfoot></tfoot>
+        </table>
 
-<form action="/boat/create" id="addBoat">
-	<fieldset>
-		<legend>Add a Boat</legend>
-		<div>
-			<label for="name">Boat Name</label>
-			<input type="text" name="name" id="name" value="" placeholder="Boat Name">
-		</div>
-		<div>
-			<label for="owner" id="owner">Owner Name</label>
-			<input type="text" name="owner" id="owner" value="" placeholder="Owner Name">
-		</div>
-		<div>
-			<label for="harbour">Choose Harbour</label>
-			<select name="harbour" id="harbour">
-				<option value="">Choose...</option>
-				<% _.each(harbours, function (h) { %>
-				<option value="<%= h.id %>"><%= h.name %></option>
-				<% }) %>
-			</select>
-		</div>
-		<div>
-			<button id="addBoat" type="submit">add boat</button>
-		</div>
-	</fieldset>
-</form>
+        <div class="row">
+            <form action="/boat/create" id="addBoat" method="post" enctype="multipart/form-data" class="col s12">
+                <input type='hidden' name='_csrf' value='<%= _csrf %>'>
+                <fieldset>
+                    <legend>Add a Boat</legend>
+
+                    <div class="row">
+                        <div class="col s6">
+                            <label for="boattype">Boat Type</label>
+                            <select name="boattype" id="boattype">
+                                <option value="" disabled selected>Choose...</option>
+                                <% _.each(boattypes, function (bt) { %>
+                                <option value="<%= bt.id %>"><%= bt.name %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s6">
+                            <i class="mdi-image-photo-camera prefix"></i>
+                            <label for="boatimage">Boat Photo</label>
+                            <input type="file" name="boatimage" id="boatimage" value="">
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="mdi-maps-directions-ferry prefix"></i>
+                            <label for="name">Boat Name</label>
+                            <input type="text" class="validate" name="name" id="name" value="">
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <i class="mdi-action-account-circle prefix"></i>
+                            <label for="owner" id="owner">Owner Name</label>
+                            <input type="text" class="validate" name="owner" id="owner" value="">
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col s6">
+                            <label for="harbour">Choose Harbour</label>
+                            <select name="harbour" id="harbour">
+                                <option value="" disabled selected>Choose...</option>
+                                <% _.each(harbours, function (h) { %>
+                                <option value="<%= h.id %>"><%= h.name %></option>
+                                <% }) %>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class"col s6">
+                            <button id="addBoat" type="submit" class="btn waves-effect waves-light">
+                                add boat <i class="mdi-content-send right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</main>
+<footer class="orange">
+    <div class="container">
+        <div class="row">
+            <p class="white-text">Company Address</p>
+        </div>
+    </div>
+</footer>

@@ -8,18 +8,29 @@
 module.exports = {
 
   attributes: {
-  	name: {
-  		required: true,
-  		type: 'string'
-  	},
+    name: {
+        required: true,
+        type: 'string'
+    },
 
-  	owner: {
-  		type: 'string'
-  	},
+    owner: {
+        type: 'string',
+        required: true
+    },
 
-  	harbour: {
-  		model: 'harbour'
-  	}
+    boatimage: {
+        model: 'upload'
+    },
+
+    harbour: {
+        model: 'harbour',
+        required: true
+    },
+
+    boattype: {
+        model: 'boattype',
+        required: true
+    }
   }
 };
 
